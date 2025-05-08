@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapeshifters Podcast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles to complement Tailwind and enhance the 8-bit theme */
+        body {
+            font-family: 'VT323', monospace; /* A slightly more readable pixel font for body */
+            background-color: #1a1a2e; /* Dark retro blue */
+            color: #e0e0e0; /* Light grey for text */
+            -webkit-font-smoothing: antialiased; /* Better font rendering */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Apply pixel font to headings and specific elements */
+        h1, h2, h3, .nav-link, .subscribe-btn, .play-btn, .listen-btn {
+            font-family: 'Press Start 2P', cursive;
+            text-transform: uppercase; /* Common in retro UIs */
+        }
+
+        /* Header specific styling */
+        header h1 {
+            text-shadow: 3px 3px 0px #000000; /* Simple pixel shadow */
+            font-size: 2.5rem; /* Tailwind's text-4xl is 2.25rem, this is a bit larger */
+        }
+        @media (min-width: 640px) {
+            header h1 {
+                font-size: 3.5rem; /* Tailwind's sm:text-5xl is 3rem */
+            }
+        }
+
+
+        /* Navigation styling */
+        nav {
+            background-color: #162447; /* Darker accent */
+            border-bottom: 4px solid #e0e0e0; /* Pixel border */
+        }
+        .nav-link {
+            padding: 0.5rem 1rem;
+            transition: background-color 0.2s, color 0.2s;
+            font-size: 0.875rem; /* text-sm */
+        }
+        .nav-link:hover {
+            background-color: #e0e0e0;
+            color: #1a1a2e;
+        }
+
+        /* Container and Section styling */
+        .podcast-section {
+            border-bottom: 4px dashed #4a4a6a; /* Pixelated dashed border */
+        }
+        .podcast-section:last-child {
+            border-bottom: none;
+        }
+
+        /* Episode card styling */
+        .episode-card {
+            background-color: #162447; /* Darker accent for cards */
+            border: 4px solid #e0e0e0; /* Pixel border */
+            box-shadow: 6px 6px 0px #0d0d1a; /* Offset pixel shadow */
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+        }
+        .episode-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #000000;
+        }
+
+        /* Button styling */
+        .pixel-btn {
+            font-family: 'Press Start 2P', cursive;
+            text-transform: uppercase;
+            background-color: #1f4068; /* Button color */
+            color: #e0e0e0;
+            border: 3px solid #e0e0e0;
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            box-shadow: 4px 4px 0px #0d0d1a; /* Pixel shadow for buttons */
+            transition: all 0.1s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .pixel-btn:hover {
+            background-color: #e0e0e0;
+            color: #1a1a2e;
+            box-shadow: 2px 2px 0px #0d0d1a;
+            transform: translate(2px, 2px);
+        }
+        .pixel-btn:active {
+            box-shadow: 0px 0px 0px #0d0d1a;
+            transform: translate(4px, 4px);
+        }
+
+
+        /* Placeholder for pixel art - more distinct */
+        .pixel-art-placeholder {
+            width: 80px;
+            height: 80px;
+            background-color: #4a4a6a; /* Muted color */
+            border: 4px solid #e0e0e0; /* Pixel border */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Press Start 2P', cursive;
+            color: #e0e0e0;
+            font-size: 0.75rem; /* text-xs */
+            margin: 1rem auto; /* Tailwind's my-4 */
+            image-rendering: pixelated; /* Ensures sharp pixels if an image is used */
+        }
+
+        /* Footer styling */
+        footer {
+            border-top: 4px solid #e0e0e0; /* Pixel border */
+        }
+        footer a {
+            color: #f39c12; /* Bright accent for links */
+            text-decoration: underline;
+        }
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        /* Custom scrollbar for a bit more theme consistency (Webkit only) */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+            border-left: 2px solid #4a4a6a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a4a6a;
+            border: 2px solid #1a1a2e;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e0e0e0;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-[#1f4068] text-white py-8 md:py-12 text-center">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-2">SHAPESHIFTERS</h1>
+        <p class="text-lg md:text-xl text-[#f39c12]">Transforming Perspectives in Talent, Learning & Development</p>
+    </header>
+
+    <nav class="sticky top-0 z-50">
+        <ul class="flex justify-center items-center py-3 space-x-2 sm:space-x-4">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#episodes" class="nav-link">Episodes</a></li>
+            <li><a href="#subscribe" class="nav-link">Subscribe</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 max-w-4xl">
+
+        <section id="about" class="podcast-section py-8">
+            <h2 class="text-3xl font-bold mb-6 text-center text-[#f39c12]">Welcome to Shapeshifters</h2>
+            <div class="text-lg space-y-4 text-center md:text-left">
+                <p>
+                    Dive deep with your host from <strong class="text-[#f39c12] font-normal">Makeshapes</strong> into the minds of influential consultants,
+                    renowned thought leaders, and pioneering practitioners in the learning, talent, and organizational
+                    development space. We explore their current research, pressing curiosities, and the exciting frontiers
+                    they're navigating.
+                </p>
+                <p>
+                    Join us for rich conversations that profile these incredible individuals and uncover the insights
+                    shaping the future of enterprise capabilities.
+                </p>
+            </div>
+            <div class="pixel-art-placeholder">[ICON]</div>
+        </section>
+
+        <section id="latest-episode" class="podcast-section py-8">
+            <h2 class="text-3xl font-bold mb-8 text-center text-[#f39c12]">Latest Episode</h2>
+            <div class="episode-card p-6 rounded-none">
+                <div class="pixel-art-placeholder mx-auto mb-4 w-32 h-32 md:w-40 md:h-40">[EP ART]</div>
+                <h3 class="text-2xl font-semibold mb-2 text-center text-white">E05: The Future of Skill-Based Organizations with Dr. Innovate</h3>
+                <p class="mb-3 text-center md:text-left">
+                    We sit down with the visionary Dr. Innovate to discuss the shift towards skill-based talent strategies
+                    and what it means for senior leaders in enterprise organizations. Discover her latest research on agile
+                    learning ecosystems.
+                </p>
+                <p class="mb-4 text-sm text-center md:text-left italic text-gray-400">Guest: Dr. Innovate, Author & Consultant</p>
+                <div class="text-center">
+                    <button class="pixel-btn play-btn">Play Episode</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="episodes" class="podcast-section py-8">
+            <h2 class="text-3xl font-bold mb-8 text-center text-[#f39c12]">All Episodes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="episode-card p-5">
+                    <h3 class="text-xl font-semibold mb-1 text-white">E04: NeuroLeadership with David Rock</h3>
+                    <p class="text-sm mb-2 text-gray-300">Applying brain science to leadership and organizational change.</p>
+                    <p class="text-xs italic mb-3 text-gray-400">Guest: David Rock, NeuroLeadership Institute</p>
+                    <a href="#" class="pixel-btn listen-btn text-sm py-2 px-4">Listen Now</a>
+                </div>
+                <div class="episode-card p-5">
+                    <h3 class="text-xl font-semibold mb-1 text-white">E03: Architecting Capability with Kathleen Hogan</h3>
+                    <p class="text-sm mb-2 text-gray-300">Building global talent capabilities in a dynamic tech landscape.</p>
+                    <p class="text-xs italic mb-3 text-gray-400">Guest: Kathleen Hogan, Microsoft</p>
+                    <a href="#" class="pixel-btn listen-btn text-sm py-2 px-4">Listen Now</a>
+                </div>
+                <div class="episode-card p-5">
+                    <h3 class="text-xl font-semibold mb-1 text-white">E02: Talent Marketplace Revolution with Josh Bersin</h3>
+                    <p class="text-sm mb-2 text-gray-300">Exploring talent marketplaces and their impact on internal mobility.</p>
+                    <p class="text-xs italic mb-3 text-gray-400">Guest: Josh Bersin, Global Industry Analyst</p>
+                    <a href="#" class="pixel-btn listen-btn text-sm py-2 px-4">Listen Now</a>
+                </div>
+                <div class="episode-card p-5">
+                    <h3 class="text-xl font-semibold mb-1 text-white">E01: Defining Modern OD with Dave Ulrich</h3>
+                    <p class="text-sm mb-2 text-gray-300">The current state and future direction of Organizational Development.</p>
+                    <p class="text-xs italic mb-3 text-gray-400">Guest: Dave Ulrich, Rensis Likert Professor</p>
+                    <a href="#" class="pixel-btn listen-btn text-sm py-2 px-4">Listen Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="subscribe" class="podcast-section py-8 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-[#f39c12]">Subscribe & Follow</h2>
+            <p class="mb-6 text-lg">Never miss an episode! Find Shapeshifters on your favorite platform:</p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-6">
+                <a href="#" title="Listen on Apple Podcasts" class="pixel-btn subscribe-btn">Apple Podcasts</a>
+                <a href="#" title="Listen on Spotify" class="pixel-btn subscribe-btn">Spotify</a>
+                <a href="#" title="Listen on Google Podcasts" class="pixel-btn subscribe-btn">Google Podcasts</a>
+                <a href="#" title="Follow on LinkedIn" class="pixel-btn subscribe-btn">LinkedIn</a>
+            </div>
+            <div class="pixel-art-placeholder">[SUB ICON]</div>
+        </section>
+
+    </div>
+
+    <footer class="bg-[#0d0d1a] text-center py-8 text-sm">
+        <p class="mb-1">&copy; 2025 Makeshapes. All Rights Reserved.</p>
+        <p>A podcast by <a href="https://example.com/makeshapes" target="_blank" rel="noopener noreferrer">Makeshapes</a> - Let's reshape the future of work.</p>
+    </footer>
+
+</body>
+</html>
